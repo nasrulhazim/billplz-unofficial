@@ -4,7 +4,7 @@ Before we get started, check out [BillPlz API](https://www.billplz.com/api)
 
 Require this package with composer using the following command:
 
-    composer require nasrulhazim\laravel-billplz
+    composer require nasrulhazim\billplz
 
 After updating composer, add the `LaraBillPlzServiceProvider` to the `providers` array in `config/app.php`
 
