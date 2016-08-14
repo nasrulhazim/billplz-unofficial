@@ -44,7 +44,7 @@ if(! function_exists('deleteBillPlz')) {
 if(! function_exists('responseBillPlz')) {
 	function responseBillPlz($billplz)
 	{
-		ist($rheader, $rbody) = explode("\n\n", $billplz);
+		list($rheader, $rbody) = explode("\n\n", $billplz);
 		return json_decode($rbody);
 	}	
 }
