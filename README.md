@@ -1,4 +1,4 @@
-# BillPlzv3
+# BillPlz Package for Laravel
 
 Before we get started, check out [BillPlz API](https://www.billplz.com/api)
 
