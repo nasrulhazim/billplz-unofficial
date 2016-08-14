@@ -13,8 +13,9 @@ class LaraBillPlzProvider extends ServiceProvider
      */
     public function boot()
     {
+        $source_config = __DIR__ . '/../config/billplz.php' ;
         $this->publishes([
-            __DIR__ . '/../config/billplz.php' => config_path('billplz.php')
+            $source_config => config_path('billplz.php')
         ], 'config');
         $this->mergeConfigFrom($source_config, 'billplz');
     }
