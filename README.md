@@ -8,7 +8,7 @@ Require this package with composer using the following command:
 
 After updating composer, add the `LaraBillPlzServiceProvider` to the `providers` array in `config/app.php`
 
-    nasrulhazim\LaraBillPlz\Providers\LaraBillPlzServiceProvider::class,
+    LaraBillPlz\Providers\LaraBillPlzServiceProvider::class,
 
 Run `php artisan vendor:publish` and `config/billplz.php` will be created for you to configure BillPlz API.
 
