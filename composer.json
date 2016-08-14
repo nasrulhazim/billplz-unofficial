@@ -8,16 +8,16 @@
             "email": "nasrulhazim.m@gmail.com"
         }
     ],
-    "autoload": {
-        "files" : {
-            "src/BillPlz/Support/helpers.php",
-        }
-        "psr-4" : {
-            "LaraBillPlz\\": "src/LaraBillPlz/" 
-        }
-    },
-    "minimum-stability": "stable",
     "require": {
         "kidino/billplz": "^0.1.1"
-    }
+    },
+    "autoload": {
+        "files": [
+            "src/BillPlz/Support/helpers.php"
+        ],
+        "psr-4": {
+            "LaraBillPlz\\": "src/LaraBillPlz/"
+        }
+    },
+    "minimum-stability": "stable"
 }
