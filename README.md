@@ -25,3 +25,47 @@ getBillPlz($id);
 ```php
 deleteBillPlz($id)
 ```
+
+# Usage Sample
+
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+
+class PaymentsController extends Controller
+{
+    public function cart()
+    {
+    	return view('payments.cart');
+    }
+
+    public function pay()
+    {
+        $data = [
+            'title' => 'Purchase BillPlz Package for Laravel',
+            'name' => 'Nasrul Hazim',
+            'amount' => 200.00,
+            'description' => 'BillPlz Package for Laravel',
+            'email' => 'nasrulhazim.m@gmail.com'
+        ];
+    	$blpz = createBillPlz(route('payments.callback'), route('payments.redirect'), $data);
+
+    	return redirect($blpz['bill']['url']);
+    }
+
+    public function callBackUrl(Request $request)
+    {
+    	dd($request->input());
+    }
+
+    public function redirectUrl(Request $request)
+    {
+    	dd($request->input());
+    }
+}
+```
