@@ -45,7 +45,8 @@ if(! function_exists('responseBillPlz')) {
 	function responseBillPlz($billplz)
 	{
 		list($rheader, $rbody) = explode("\n\n", $billplz);
-		return json_decode($rbody);
+		$result = json_decode($rbody);
+		return $result;
 	}	
 }
 
