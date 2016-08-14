@@ -9,7 +9,6 @@
         }
     ],
     "require": {
-        "kidino/billplz": "^0.1.1"
     },
     "autoload": {
         "files": [
