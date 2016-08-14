@@ -16,7 +16,7 @@
             "src/BillPlz/Support/helpers.php"
         ],
         "psr-4": {
-            "LaraBillPlz\\": "src/LaraBillPlz/"
+            "LaraBillPlz\\": "src/BillPlz/"
         }
     },
     "minimum-stability": "stable"
