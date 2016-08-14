@@ -21,7 +21,7 @@ class BillPlzBill extends BillPlz
 	{
 		// https://www.billplz.com/api#v3-get-a-bill18
 		// should use BillPlzValidator
-		return $this->run('bills/'.$id);
+		return $this->run('bills/' . $id);
 	}
 
 	public function delete_bill()
@@ -29,6 +29,6 @@ class BillPlzBill extends BillPlz
 		// https://www.billplz.com/api#delete-a-bill20
 		// should use BillPlzValidator
 		$this->data = $data;
-		return $this->run('bills');
+		return $this->run('bills', true);
 	}
 }

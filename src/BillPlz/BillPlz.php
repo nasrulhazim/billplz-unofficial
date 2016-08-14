@@ -4,46 +4,31 @@ namespace LaraBillPlz;
 
 class BillPlz {
 
-	private $api_endpoint;
-	private $api_key;
-	private $data;
-	private $_responses;
+        protected $data;
 
-	public function __contruct()
-	{
-		$this->api_endpoint = config('billplz.'.env('APP_ENV').'.api_endpoint');
-		$this->api_key = config('billplz.'.env('APP_ENV').'.api_key');
-		$this->_responses = [];
-	}
+        protected function run($type, $delete = false)
+        {
+                $process = curl_init(config('billplz.'.env('APP_ENV').'.api_endpoint'). $type);
 
-	public function responses()
-	{
-		return $this->_responses;
-	}
+                curl_setopt($process, CURLOPT_HEADER, 0);
+                curl_setopt($process, CURLOPT_USERPWD, config('billplz.'.env('APP_ENV').'.api_key'));
+                curl_setopt($process, CURLOPT_TIMEOUT, 30);
+                curl_setopt($process, CURLOPT_RETURNTRANSFER, TRUE);
 
-	protected function run($type, $delete = false)
-	{
-		$process = curl_init($this->api_endpoint . $type);
+                if($delete) {
+                	curl_setopt($process, CURLOPT_CUSTOMREQUEST, "DELETE");
+                }
 
-        curl_setopt($process, CURLOPT_HEADER, 0);
-        curl_setopt($process, CURLOPT_USERPWD, $this->api_key . ":");
-        curl_setopt($process, CURLOPT_TIMEOUT, 30);
-        curl_setopt($process, CURLOPT_RETURNTRANSFER, TRUE);
+                if(is_array($this->data) && count($this->data) > 0) {
+                	curl_setopt($process, CURLOPT_POSTFIELDS, http_build_query($this->data));
+                }
 
-        if($delete) {
-        	curl_setopt($process, CURLOPT_CUSTOMREQUEST, "DELETE");
+                $return = curl_exec($process);
+
+                curl_close($process);
+
+                $responses = json_decode($return, true);
+
+                return $responses;
         }
-
-        if(is_array($this->data) && count($this->data) > 0) {
-        	curl_setopt($process, CURLOPT_POSTFIELDS, http_build_query($this->data));
-        }
-        
-        $return = curl_exec($process);
-        curl_close($process);
-        $responses = json_decode($return, true);
-
-        $this->_responses = $responses;
-
-        return $this->responses();
-	}
 }

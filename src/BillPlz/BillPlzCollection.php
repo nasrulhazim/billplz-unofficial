@@ -21,6 +21,7 @@ class BillPlzCollection extends BillPlz
 				$data = ['title' => 'BillPlz Malaysia Payment Gateway'];
 			}
 		}
+		
 		$this->data = $data;
 
 		return $this->run('collections');
@@ -33,7 +34,7 @@ class BillPlzCollection extends BillPlz
 		if(!is_array($data)) {
 			throw new Exception('Parameter passed is not array.');
 		} else {
-			if(!isset($data['title'] || !isset($data['description'] || !isset($data['amount']) {
+			if(!isset($data['title']) || !isset($data['description']) || !isset($data['amount']) ) {
 				throw new Exception('You are missing required paramters. Please refer to BillPlz Create Open Collection at https://www.billplz.com/api#create-an-open-collection');
 			}
 		}
